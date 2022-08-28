@@ -6,6 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import AnnouncementIcon from "@mui/icons-material/Announcement";
+import ItemSelect from "./Components/ItemSelect";
 
 function App() {
   const [techSelected, setTechSelected] = React.useState("");
@@ -149,7 +150,7 @@ function App() {
                 onChange={handleChange}
               >
                 <MenuItem value="angular">
-                  <div
+                  {/* <div
                     style={{
                       display: "flex",
                       justifyContent: "center",
@@ -158,10 +159,11 @@ function App() {
                   >
                     <img src="img/angular.jpg" />
                     <p style={{ margin: "0 0 0 20px" }}>Angular</p>
-                  </div>
+                  </div> */}
+                  <ItemSelect imagePath="img/angular.jpg" tech="Angular"/>
                 </MenuItem>
                 <MenuItem value="react">
-                  <div
+                  {/* <div
                     style={{
                       display: "flex",
                       justifyContent: "center",
@@ -170,10 +172,11 @@ function App() {
                   >
                     <img src="img/react.jpg" />
                     <p style={{ margin: "0 0 0 20px" }}>React</p>
-                  </div>
+                  </div> */}
+                  <ItemSelect imagePath="img/react.jpg" tech="React"/>
                 </MenuItem>
                 <MenuItem value="vue">
-                  <div
+                  {/* <div
                     style={{
                       display: "flex",
                       justifyContent: "center",
@@ -182,7 +185,8 @@ function App() {
                   >
                     <img src="img/vue.jpg" />
                     <p style={{ margin: "0 0 0 20px" }}>Vue</p>
-                  </div>
+                  </div> */}
+                  <ItemSelect imagePath="img/vue.jpg" tech="Vue"/>
                 </MenuItem>
               </Select>
             </FormControl>

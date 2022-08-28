@@ -1,7 +1,9 @@
 import React from "react";
 import moment from "moment";
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, Modal } from "@mui/material";
 import InfiniteScroll from "react-infinite-scroll-component";
+import ReportGmailerrorredIcon from "@mui/icons-material/ReportGmailerrorred";
+import Button from "@mui/material/Button";
 
 const All = (props) => {
   const [news, setNews] = React.useState();
@@ -10,6 +12,9 @@ const All = (props) => {
   const refLoading = React.useRef();
   const [loading, setLoading] = React.useState(false);
   const refPrueba = React.useRef([]);
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const [pagina, setPagina] = React.useState(0);
 
@@ -63,6 +68,35 @@ const All = (props) => {
 
   return (
     <>
+      <Modal open={open} onClose={handleClose}>
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "50%",
+            backgroundColor: "#fff",
+            boxShadow: "24px",
+            padding: "20px",
+          }}
+        >
+          <div style={{ textAlign: "center" }}>
+            <ReportGmailerrorredIcon
+              sx={{ fontSize: "50px", color: "#ff0000" }}
+            />
+          </div>
+          <p style={{ textAlign: "center" }}>
+            Oops... Sorry, the page you are trying to access does not exist.
+          </p>
+          <div style={{ textAlign: "center" }}>
+            <Button onClick={handleClose} variant="outlined">
+              Close
+            </Button>
+          </div>
+        </div>
+      </Modal>
+
       {loading && (
         <div
           style={{
@@ -158,7 +192,11 @@ const All = (props) => {
                           cursor: "pointer",
                         }}
                         onClick={() => {
-                          window.open(notice.story_url);
+                          if (!(notice.story_url == null)) {
+                            window.open(notice.story_url);
+                          } else {
+                            handleOpen();
+                          }
                         }}
                       >
                         {notice.story_title || notice.title}

@@ -1,7 +1,10 @@
 import React from "react";
+import { Modal } from "@mui/material";
 import Pagination from "@mui/material/Pagination";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
 import moment from "moment";
+import ReportGmailerrorredIcon from "@mui/icons-material/ReportGmailerrorred";
+import Button from "@mui/material/Button";
 
 const MyFaves = (props) => {
   const refActualFaves = React.useRef([]);
@@ -10,6 +13,9 @@ const MyFaves = (props) => {
   const [actualPage, setActualPage] = React.useState(1);
   const [infLim, setInfLim] = React.useState(0);
   const [supLim, setSupLim] = React.useState(8);
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   function deleteNewsStorage(ind) {
     refActualFaves.current = newsFaves.filter((elem, index) => {
@@ -37,6 +43,35 @@ const MyFaves = (props) => {
 
   return (
     <>
+      <Modal open={open} onClose={handleClose}>
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "50%",
+            backgroundColor: "#fff",
+            boxShadow: "24px",
+            padding: "20px",
+          }}
+        >
+          <div style={{ textAlign: "center" }}>
+            <ReportGmailerrorredIcon
+              sx={{ fontSize: "50px", color: "#ff0000" }}
+            />
+          </div>
+          <p style={{ textAlign: "center" }}>
+            Oops... Sorry, the page you are trying to access does not exist.
+          </p>
+          <div style={{ textAlign: "center" }}>
+            <Button onClick={handleClose} variant="outlined">
+              Close
+            </Button>
+          </div>
+        </div>
+      </Modal>
+
       {newsFaves.length < 1 && (
         <div
           style={{
@@ -65,6 +100,7 @@ const MyFaves = (props) => {
         }}
       >
         {newsFaves?.slice(infLim, supLim).map((notice, index) => {
+          console.log(notice.story_url, "URL");
           return (
             <div
               key={index}
@@ -123,7 +159,11 @@ const MyFaves = (props) => {
                     cursor: "pointer",
                   }}
                   onClick={() => {
-                    window.open(notice.story_url);
+                    if (!(notice.story_url == null)) {
+                      window.open(notice.story_url);
+                    } else {
+                      handleOpen();
+                    }
                   }}
                 >
                   {notice.story_title}
