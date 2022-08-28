@@ -1,15 +1,9 @@
 import React from "react";
-import Pagination from "@mui/material/Pagination";
 import moment from "moment";
 import { CircularProgress } from "@mui/material";
 import InfiniteScroll from "react-infinite-scroll-component";
 
 const All = (props) => {
-  const refTotalPages = React.useRef();
-  const [totalPages, setTotalPages] = React.useState();
-  const refActualPage = React.useRef();
-  const [actualPage, setActualPage] = React.useState(1);
-  const refNews = React.useRef();
   const [news, setNews] = React.useState();
   const refSaved = React.useRef([]);
   const [flagShowHeart, setFlagShowHeart] = React.useState(false);
@@ -20,23 +14,14 @@ const All = (props) => {
   const [pagina, setPagina] = React.useState(0);
 
   function peticion(tech) {
-    // console.log(pagina, "pagina")
-    // setLoading(true);
     fetch(
-      `https://hn.algolia.com/api/v1/search_by_date?query=${tech}&page=${pagina}&hitsPerPage=8`
+      `https://hn.algolia.com/api/v1/search_by_date?query=${tech}&page=${pagina}&hitsPerPage=4`
     )
       .then((response) => response.json())
       .then((data) => {
         refPrueba.current = [...refPrueba.current, ...data.hits];
 
-        console.log(refPrueba.current, "prueba");
-        refTotalPages.current = data.nbPages;
-        setTotalPages(refTotalPages.current);
-
-        // refNews.current = data.hits;
         setNews(refPrueba.current);
-        // refLoading.current = false;
-        // setLoading(refLoading.current);
       });
     setPagina(pagina + 1);
   }
@@ -65,9 +50,9 @@ const All = (props) => {
   }
 
   React.useEffect(() => {
-    peticion(props.techSelected, 1);
-    refActualPage.current = 1;
-    setActualPage(refActualPage.current);
+    setPagina(0);
+    refPrueba.current = [];
+    peticion(props.techSelected, pagina);
 
     if (!(JSON.parse(localStorage.getItem("newsSelected")) == null)) {
       refSaved.current = JSON.parse(localStorage.getItem("newsSelected"));
@@ -91,16 +76,21 @@ const All = (props) => {
       )}
 
       {!loading && news && (
-        <div>
+        <div style={{ display: "flex", justifyContent: "center" }}>
           <div
             style={{
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "space-between",
-              padding: "0 5% 0 5%",
+              width: "95%",
             }}
           >
             <InfiniteScroll
+              loader={<h4>Loading...</h4>}
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "center",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
               dataLength={news.length}
               next={() => peticion(props.techSelected)}
               hasMore={true}
@@ -116,13 +106,12 @@ const All = (props) => {
                     key={index}
                     style={{
                       width: "90%",
-                      maxWidth: "30.375rem",
                       minHeight: "5.625rem",
                       height: "auto",
                       margin:
                         props.widthScreen < 920
                           ? "2.375rem 0"
-                          : "2.375rem 1rem 1.875rem 1rem",
+                          : "2.375rem 0 1.875rem 0",
                       padding: "0 0 0 1.625rem",
                       opacity: "0.8",
                       borderRadius: "6px",
@@ -229,17 +218,6 @@ const All = (props) => {
               })}
             </InfiniteScroll>
           </div>
-          {/* <Pagination
-            variant="outlined"
-            shape="rounded"
-            count={totalPages}
-            page={actualPage}
-            onChange={(e, value) => {
-              window.scrollTo(0, 0);
-              setActualPage(value);
-              peticion(props.techSelected, value);
-            }}
-          /> */}
         </div>
       )}
     </>
