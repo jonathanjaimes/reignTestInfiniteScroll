@@ -206,7 +206,7 @@ function App() {
         </>
       )}
 
-      <div style={{ padding: "0 10% 0 10%", margin: "0 0 5rem 0" }}>
+      <div style={{ padding: "0 10% 80px 10%", margin: "0 0 5rem 0" }}>
         {techSelected?.length > 0 && !showFaves && (
           <All techSelected={techSelected} widthScreen={widthScreen} />
         )}
