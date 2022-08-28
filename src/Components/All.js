@@ -27,7 +27,8 @@ const All = (props) => {
         refPrueba.current = [...refPrueba.current, ...data.hits];
 
         setNews(refPrueba.current);
-      });
+      })
+      .catch(e=>console.log(e))
     setPagina(pagina + 1);
   }
 
