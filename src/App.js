@@ -194,7 +194,7 @@ function App() {
         </>
       )}
 
-      {techSelected.length == 0 && (
+      {(techSelected.length == 0 && !showFaves) && (
         <>
           <div style={{ textAlign: "center", margin: "70px 0 0 0" }}>
             <AnnouncementIcon sx={{ color: "red", fontSize: "60px" }} />
