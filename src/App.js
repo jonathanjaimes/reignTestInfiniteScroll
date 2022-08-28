@@ -5,6 +5,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import AnnouncementIcon from "@mui/icons-material/Announcement";
 
 function App() {
   const [techSelected, setTechSelected] = React.useState("");
@@ -186,6 +187,18 @@ function App() {
               </Select>
             </FormControl>
           </div>
+        </>
+      )}
+
+      {techSelected.length == 0 && (
+        <>
+          <div style={{ textAlign: "center", margin: "70px 0 0 0" }}>
+            <AnnouncementIcon sx={{ color: "red", fontSize: "60px" }} />
+          </div>
+          <p style={{ textAlign: "center", padding: "0 40px" }}>
+            If this is your first time on our site, you must choose a technology
+            from the list.
+          </p>
         </>
       )}
 
