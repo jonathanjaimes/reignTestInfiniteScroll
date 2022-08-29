@@ -31,9 +31,11 @@ Desktop version:
 
 ![captures](/public/img/escritorio.PNG "Desktop version")
 
-Mobile version:
+<p align="center">
+  <img width="500px" src="/public/img/escritorio.PNG">
+</p>
 
-![captures](/public/img/movil.jpeg)
+Mobile version:
 
 <p align="center">
   <img height="500px" src="/public/img/movil.jpeg">
