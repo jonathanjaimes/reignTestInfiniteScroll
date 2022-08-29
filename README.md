@@ -29,10 +29,8 @@ Captures:
 
 Desktop version:
 
-![captures](/public/img/escritorio.PNG "Desktop version")
-
 <p align="center">
-  <img width="500px" src="/public/img/escritorio.PNG">
+  <img width="800px" src="/public/img/escritorio.PNG">
 </p>
 
 Mobile version:
