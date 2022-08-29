@@ -27,4 +27,4 @@ Comments:
 
 Captures:
 
-![alt text for screen readers](public/img/escritorio.png "Text to show on mouseover")
+![alt text for screen readers](./public/img/escritorio.png "Text to show on mouseover")
