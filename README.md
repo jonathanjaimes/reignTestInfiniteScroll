@@ -33,4 +33,4 @@ Desktop version:
 
 Movil version:
 
-![captures](/public/img/movil.jpg "Movil version")
+![captures](/public/img/movil.jpeg "Movil version")
