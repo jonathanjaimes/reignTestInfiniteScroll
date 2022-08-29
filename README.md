@@ -24,3 +24,7 @@ Comments:
 
 1. Some elements of the Http request do not have a URL, therefore when choosing the news, an alert will appear indicating that the page you are trying to access does not exist.
 2. Some elements that arrive in response to the Http request arrive with repeated titles, therefore you will see that it is possible to add several news with the same titles, this is because although each one comes with the same title, they have different descriptions.
+
+Captures:
+
+![alt text for screen readers](escritorio.png "Text to show on mouseover")
