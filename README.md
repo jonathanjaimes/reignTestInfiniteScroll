@@ -36,6 +36,6 @@ Mobile version:
 ![captures](/public/img/movil.jpeg)
 
 <p align="center">
-  <img src="/public/img/movil.jpeg">
+  <img width="500px" src="/public/img/movil.jpeg">
 </p>
  
