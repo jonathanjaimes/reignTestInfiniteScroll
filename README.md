@@ -32,5 +32,6 @@ Desktop version:
 ![captures](/public/img/escritorio.PNG "Desktop version")
 
 Mobile version:
+
 {:.center}
 ![captures](/public/img/movil.jpeg)
