@@ -33,4 +33,5 @@ Desktop version:
 
 Mobile version:
 
-->![captures](/public/img/movil.jpeg)<-
+![captures](/public/img/movil.jpeg){ width="800" height="600" style="display: block; margin: 0 auto" }
+ 
