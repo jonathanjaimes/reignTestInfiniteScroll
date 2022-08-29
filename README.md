@@ -33,4 +33,4 @@ Desktop version:
 
 Mobile version:
 
-![captures](/public/img/movil.jpeg?style=center)
+![captures](/public/img/movil.jpeg#center)
