@@ -27,4 +27,10 @@ Comments:
 
 Captures:
 
-![alt text for screen readers](/public/img/escritorio.PNG "Text to show on mouseover")
+Desktop version:
+
+![captures](/public/img/escritorio.PNG "Desktop version")
+
+Movil version:
+
+![captures](/public/img/movil.jpg "Movil version")
